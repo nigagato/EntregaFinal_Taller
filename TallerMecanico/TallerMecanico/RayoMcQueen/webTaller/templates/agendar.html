@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/agenda.css' %}" />
+{% endblock css %}
+
+{% block contenido %}
+    <section id="agenda">
+        <span style="color: black">Agenda tu atención</span>
+        <div class="agenda-input">
+            <form>
+                <h5>Nombre completo</h5>
+                <input class="col-p" placeholder="Nombre...." type="text" name="txtNombre" id="txtNombre" required />
+                <h5>Correo electrónico</h5>
+                <input class="col-p" placeholder="Email...." type="email" name="txtEmailAgendar" id="txtEmailAgendar" required />
+                <h5>Número de teléfono</h5>
+                <input class="col-p" placeholder="+569...." type="number" name="txtTelefono" id="txtTelefono" required />
+                <h5>Calendario</h5>
+                <input type="date" name="fechaAtencion" id="fechaAtencion" required>
+                <button type="submit" onclick="validarMensaje(event)" id="btnAgendarForm">Agendar</button>
+            </form>
+        </div>
+    </section>
+{% endblock contenido %}
+
+{% block js %}
+    <script src="{% static 'js/agendar.js' %}"></script>
+{% endblock js %}

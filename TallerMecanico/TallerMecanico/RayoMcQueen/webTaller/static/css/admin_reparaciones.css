@@ -1,0 +1,172 @@
+/* admin_reparaciones.css */
+
+/* Center the table */
+table {
+  margin: 1em auto;
+  /* Add a small margin from the navbar */
+}
+
+/* Responsive table */
+@media (max-width: 500px) {
+  table {
+    width: 100%;
+  }
+
+  table td,
+  table th {
+    display: block;
+    border: none;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+}
+
+/* Additional styling for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  padding: 0.75em;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #000;
+  /* Add black border to each td and th element */
+}
+
+table tr:first-child th {
+  border-top: none;
+  /* Remove top horizontal line of the table */
+}
+
+table img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Vertical lines */
+table td:first-child,
+table th:first-child {
+  border-left: none;
+}
+
+table td:last-child,
+table th:last-child {
+  border-right: none;
+}
+
+/* Estilo para la sección de Administración de reparaciones */
+#admin_reparaciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: yellowgreen;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
+}
+
+/* Estilo para el título de Administración de reparaciones */
+#admin_reparaciones span {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+/* Estilo para los inputs */
+.contacto-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.contacto-input h5 {
+  margin-bottom: 5px;
+  color: #003366;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contacto-input input[type="text"], 
+.contacto-input textarea, 
+.contacto-input select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.contacto-input input[type="file"] {
+  padding: 5px;
+}
+
+/* Estilo para el botón */
+#btnMensaje {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#btnMensaje:hover {
+  background-color: #0099CC;
+}
+
+footer{
+  background-color: black;
+  color: honeydew;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer h4{
+  font-size: large;
+}
+
+@media (max-width:1200px){
+  #logo{
+      margin-left: 80%;
+  }
+  #admin_reparaciones{
+    margin-top: 45%;
+  }
+}
+
+@media(max-width:968px){
+  #logo{
+      margin-left: 80%;
+  }
+  header span{
+      display: none;
+  }
+
+  #btnAgendar{
+      margin-right: 15%;
+  }
+
+  #admin_reparaciones{
+    margin-top: 45%;
+  }
+}

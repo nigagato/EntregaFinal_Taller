@@ -1,0 +1,180 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    padding: 30px;
+
+}
+
+#btnAgendar {
+    margin-left: 10px;
+    margin-top: -2px;
+}
+
+#btnVerLogin {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    margin-top: -10px;
+}
+
+#logo {
+    margin-left: 200px;
+    height: 125px;
+    width: 125px;
+    padding: 0;
+    background-size: cover;
+  }
+  
+  #navbarSupportedContent {
+    margin-right: 200px;
+  }
+
+.nav-item {
+    display: block;
+    margin-left: 10px;
+}
+
+.nav-link {
+    color: black;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s;
+}
+
+.nav-link:hover {
+    border-bottom-color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(154, 205, 50, 0.2);
+}
+
+footer {
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    margin-top: auto;
+  }
+  
+  footer h4 {
+    font-size: large;
+  }
+
+#agenda {
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%; 
+    border: 5px solid black;
+    background-color: yellowgreen;
+    text-align: center;
+    font-size: 20px;
+}
+.agenda-input{
+    display: block;
+    text-align: left;
+    margin: 6px 10px;
+    padding: 10px 20px;
+}
+.agenda-input input {
+    white-space: nowrap;
+}
+
+.agenda-input input[type="text"] {
+    width: 100%;
+}
+.agenda-input input[type="email"] {
+    width: 100%;
+}
+.agenda-input input[type="number"] {
+    width: 100%;
+}
+
+.agenda-input input[type="date"]{
+    width: 30%;
+}
+
+#btnAgendarForm{
+    height: 50px;
+    width: 140px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #f8f9fa;
+}
+#agenda input {
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px rgb(60, 38, 2);
+}
+#agenda button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Times New Roman';
+    margin-left: 75%;
+}
+
+#agenda button:hover {
+    background-color: gray;
+}
+
+@media(max-width:1200px){
+    #agenda{
+        margin-top: 25%;
+    }
+
+    #agenda button{
+        margin-left: 15%;
+    }
+}
+
+
+@media(max-width:968px){
+    #logo{
+        margin-left: 80%;
+    }
+
+    header span{
+        display: none;
+    }
+
+    #btnAgendar{
+        margin-right: 25%;
+    }
+
+    #btnAgendarForm{
+        margin-left: 60%;
+    }
+}
+@media (max-width:768px){
+    span{
+        margin-top: 2%;
+    }
+    
+    #btnAgendar{
+        margin-right: 55%;
+    }
+
+    #btnAgendarForm{
+        margin-left: 40%;
+    }
+
+
+}
+
+

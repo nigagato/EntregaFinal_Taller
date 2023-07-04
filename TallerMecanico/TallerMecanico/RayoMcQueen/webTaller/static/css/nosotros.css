@@ -1,0 +1,43 @@
+#nosotros {
+    background-color: yellowgreen;
+    color: black;
+    text-align: center;
+    margin-top: 55px;
+  }
+  
+  #nosotros h2 {
+    text-align: center;
+    margin-top: 15px;
+    font-size: xx-large;
+  }
+  
+  #nosotros .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    font-size: 19px;
+  }
+  
+  #nosotros .container p {
+    text-align: center;
+  }
+  
+  #nosotros .container a {
+    text-decoration: none;
+    margin-top: 20px;
+    background-color: black;
+    padding: 15px;
+    display: inline-block;
+    width: 125px;
+    border-radius: 25px;
+    color: white;
+  }
+  
+  @media (max-width: 991px) {
+    #nosotros .container {
+      height: auto;
+    }
+  }
+  

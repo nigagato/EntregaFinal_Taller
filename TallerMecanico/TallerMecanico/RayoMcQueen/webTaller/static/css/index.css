@@ -1,0 +1,225 @@
+* {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+  background-color: black;
+  color: honeydew;
+  text-align: center;
+  padding: 30px;
+
+}
+
+#btnAgendar {
+  margin-left: 10px;
+  margin-top: -2px;
+}
+
+#btnVerLogin {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  margin-top: -10px;
+}
+
+#logo {
+  margin-left: 200px;
+  height: 125px;
+  width: 125px;
+  padding: 0;
+  background-size: cover;
+}
+
+#navbarSupportedContent {
+  margin-right: 200px;
+}
+
+.nav-item {
+  display: block;
+  margin-left: 10px;  
+}
+
+.nav-link{
+  color: black;
+  border-bottom: 2px solid transparent; /* Agrega un borde inferior transparente */
+  transition: border-bottom-color 0.2s;
+  font-size: large;
+}
+
+.nav-link:hover{
+  border-bottom-color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgba(154, 205, 50, 0.2);
+}
+
+#carrusel {
+  max-width: 80%;
+  margin-top: 5%;
+  margin-left: 10%;
+  padding: 10px;
+}
+
+
+#carrusel img {
+  max-width: 100%;
+  border: 5px solid black;
+  height: 700px
+}
+
+.carousel-item h1 {
+  text-align: center;
+}
+
+.carousel-item h1 a {
+  text-decoration: none;
+  color: black;
+  border-bottom: solid transparent 2px;
+}
+
+.carousel-item h1 a:hover {
+  border-bottom-color: goldenrod;
+}
+
+.carousel-item h3 {
+  font-size: large;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+
+footer{
+  background-color: black;
+  color: honeydew;
+  text-align: center;
+  margin-top: auto;
+}
+
+footer h4 {
+  font-size: large;
+}
+
+
+
+form a {
+  text-decoration: none;
+}
+
+form a:hover {
+  border-bottom-color: white;
+}
+.center-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
+#categorias img{
+  border: 5px solid black;
+}
+
+
+
+
+
+@media (max-width:1200px) {
+
+ 
+
+  header label {
+    display: none;
+  }
+
+  #logo{
+    margin-left: 80%;
+  }
+
+  #carrusel{
+    width: 80%;
+    height: 80%;
+    margin-top: 25%;
+  }
+
+  
+}
+
+
+
+
+
+@media (max-width:1024px) {
+  #logo{
+    margin-left: 80%;
+  }
+  
+  #carrusel{
+    width: 80%;
+    margin-top: 15%;
+  }
+
+  header span{
+    text-align: center;
+  }
+  
+  #btnAgendar{
+    margin-right: 15%;
+    text-align: center;
+  }
+
+  #btnVerLogin {
+    transform: translateX(0);
+    margin-left: 10%;
+  }
+
+
+}
+
+
+@media (max-width:768px) {
+  header span{
+    display: none;
+  }
+  #btnAgendar{
+    margin-right: 55%;
+  }
+  #carrusel{
+    margin-top: 24%;
+  }
+  #nosotros h2{
+    margin-bottom: 18%;
+  }
+
+  #boton{
+    margin-bottom: 10%;
+  }
+
+
+  /* Responsive styles */
+@media (max-width: 640px) {
+
+  /* Header */
+  header {
+    padding: 15px;
+    text-align: center; /* Center the header content */
+  }
+
+  /* Logo */
+  #logo {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Navbar */
+  
+
+
+}
+
+}

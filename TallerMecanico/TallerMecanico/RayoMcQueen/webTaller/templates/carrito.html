@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+.carrito-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.carrito-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+.carrito-table th,
+.carrito-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.carrito-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.carrito-table td:last-child {
+  text-align: center;
+}
+</style>
+{% endblock css %}
+
+{% block contenido %}
+<section>
+  <div class="carrito-container">
+      <table class="carrito-table">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+        {% if request.session.carrito.items %}
+        {% for key, value in request.session.carrito.items %}
+        <tr>
+          <td>{{ value.id }}</td>
+          <td>{{ value.nombre }}</td>
+          <td>{{ value.precio }}</td>
+          <td>{{ value.cantidad }}</td>
+          <td>${{ value.total }}</td>
+          <input type="hidden" name="txtNombre"  id="txtNombre" value="{{ value.nombre }}">
+          <input type="hidden" name="txtPrecio" id= "txtPrecio" value="{{ value.precio }}">
+          <input type="hidden" name="txtCantidad" id="txtCantidad" value="{{ value.cantidad }}">
+          <input type="hidden" name="txtTotal" id="txtTotal" value="{{ value.total }}">
+            
+          <td>
+            <a href="{% url 'AAC' value.id %}">Agregar</a>
+            <a href="{% url 'QA' value.id %}">Quitar</a>
+            <a href="{% url 'ELIMINAR' value.id %}">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="4">Total</td>
+          <td>${{ total }}</td>
+        </tr>
+        <tr>
+          <td colspan="5">Vaciar carrito</td>
+          <td>
+            <a href="{% url 'VACIAR' %}">
+              <img src="{% static 'img/papelera.png' %}" width="20px" height="20px" alt="">
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <button type="submit">Guardar carrito</button>
+          </td>
+        </tr>
+        {% endif %}
+      </table>
+  </div>
+</section>
+{% endblock contenido %}

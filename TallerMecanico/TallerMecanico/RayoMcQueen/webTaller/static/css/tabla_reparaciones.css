@@ -1,0 +1,67 @@
+/* admin_reparaciones.css */
+
+/* Center the table */
+table {
+  margin: 1em auto;
+  /* Add a small margin from the navbar */
+}
+
+/* Responsive table */
+@media (max-width: 500px) {
+  table {
+    width: 100%;
+  }
+
+  table td,
+  table th {
+    display: block;
+    border: none;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+}
+
+/* Additional styling for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  padding: 0.75em;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #000;
+  /* Add black border to each td and th element */
+}
+
+table tr:first-child th {
+  border-top: none;
+  /* Remove top horizontal line of the table */
+}
+
+table img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Vertical lines */
+table td:first-child,
+table th:first-child {
+  border-left: none;
+}
+
+table td:last-child,
+table th:last-child {
+  border-right: none;
+}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/ficha.css' %}" />
+{% endblock css %}
+
+{% block contenido %}
+    <div class="contenedor">
+        <img src="{{ reparacion.foto.url }}" alt="" />
+        <h4>{{ reparacion.nombre }}</h4>
+        <p>{{ reparacion.descripcion }}</p>
+    </div>
+
+    {% for item in galeria %}
+        <center>
+            <img src="{{item.foto.url}}" height="150px" width="150px" alt="">
+        </center>
+
+    {% endfor %}
+{% endblock contenido %}

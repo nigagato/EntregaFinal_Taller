@@ -1,0 +1,218 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    padding: 30px;
+
+}
+
+#btnAgendar {
+    margin-left: 10px;
+    margin-top: -2px;
+}
+
+#btnVerLogin {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    margin-top: -10px;
+}
+
+#logo {
+    margin-left: 200px;
+    height: 125px;
+    width: 125px;
+    padding: 0;
+    background-size: cover;
+  }
+  
+  #navbarSupportedContent {
+    margin-right: 200px;
+  }
+
+.nav-item {
+    display: block;
+    margin-left: 10px;
+}
+
+.nav-link {
+    color: black;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s;
+}
+
+.nav-link:hover {
+    border-bottom-color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(154, 205, 50, 0.2);
+}
+
+footer{
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    margin-top: auto;
+}
+  
+footer h4{
+    font-size: large;
+}
+#contactanos {
+    width: 90%;
+    height: 50%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%; 
+    border: 5px solid black;
+    background-color: yellowgreen;
+    text-align: center;
+    font-size: 20px;
+}
+.contacto-input{
+    display: block;
+    text-align: left;
+    margin: 6px 10px;
+    padding: 10px 20px;
+}
+.contacto-input input {
+    white-space: nowrap;
+}
+
+.contacto-input input[type="text"] {
+    width: 100%;
+}
+.contacto-input input[type="email"] {
+    width: 100%;
+}
+.contacto-input input[type="number"] {
+    width: 100%;
+}
+
+#txtMensaje{
+    height: 10vh;
+    width: 100%;
+}
+
+#btnMensaje{
+    margin-top: 1%;
+    margin-left: 85%;
+    height: 50px;
+    width: 140px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background-color: #f8f9fa;
+}
+#contactanos input {
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px rgb(60, 38, 2);
+}
+#contactanos button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Times New Roman';
+}
+
+#contactanos button:hover {
+    background-color: gray;
+}
+
+@media (max-width:1200px) {
+
+    nav {
+      position: static;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      /*cajas flexibles (una al lado de la otra)*/
+      float: right;
+      transform: translateX(0);
+      /*ubicarlo al costado derecho*/
+      background: rgb(77, 72, 72);
+    }
+  
+    nav a {
+      border-bottom: none;
+    }
+  
+    header label {
+      display: none;
+    }
+  
+    #logo{
+      margin-left: 80%;
+    }
+
+    #contactanos{
+        margin-top: 35%;
+    }
+}
+
+@media(max-width:968px){
+    #logo{
+        margin-left: 80%;
+    }
+
+    header span{
+        display: none;
+    }
+
+    #btnAgendar{
+        margin-right: 25%;
+    }
+
+    #btnMensaje{
+        margin-left: 70%;
+    }
+
+    #contactanos{
+        margin-top: 45%;
+    }
+}
+@media (max-width:768px){
+    span{
+        display: none;
+    }
+    
+    #btnAgendar{
+        margin-right: 55%;
+    }
+    #contactanos{
+        margin-top: 65%;
+    }
+}
+
+@media (max-width:560px){
+    #btnMensaje{
+        margin-left: 30%;
+    }
+
+    #btnAgendar{
+        margin-right: 105%;
+    }
+
+    #btnVerLogin{
+        margin-left: -5%;
+    }
+    #contactanos{
+        margin-top: 45%;
+    }
+
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}" >
+    <title>Rayo McQueen</title>
+</head>
+<body>
+    <div class="contenedor-formulario contenedor">
+        <div class="close"><a href="{% url 'IND' %}">+</a></div>
+        <div class="imagen-formulario">
+            
+        </div>
+        <script src="{ % static 'js/registro.js' %}"></script>
+        <script src="{ % static 'js/DaoRegistro.js' %}"></script>
+
+        <form action="{%url 'REGI' %}" class="formulario" method="post">
+            {% csrf_token %}
+            <div class="texto-formulario">
+                <a class="navbar-brand" href="{% url 'IND' %}">
+                    <img src="{% static 'img/elrayo.png' %}" alt="logo" id="logo">
+                </a>
+                <h2>Registrate con nosotros!</h2>
+            </div>
+            <div class="input">
+                <label for="Nombre">Nombre</label>
+                <input placeholder="Ingresa tu usuario "type="text" name="txtNombre" id="txtNombre" required>
+            </div>
+            <div class="input">
+                <label for="email">Email</label>
+                <input placeholder="Ingresa tu usuario "type="text" name="txtEmail" id="txtEmail" required>
+            </div>
+            <div class="input">
+                <label for="contraseña">Contraseña</label>
+                <input placeholder="Ingresa tu contraseña "type="password"  name="pwdPass" id="pwdPass" required>
+            </div>
+            <div class="input">
+                <label for="confirmarcontraseña">Confirma contraseña...</label>
+                <input placeholder="Ingresa tu contraseña "type="password"  name="pwdConfirmPass" id="pwdConfirmPass" required>
+            </div>
+            <div class="input">
+                <input type="submit" value="Registrar"  onclick= "validar()" id="btnRegistrar">
+            </div>
+        </form>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

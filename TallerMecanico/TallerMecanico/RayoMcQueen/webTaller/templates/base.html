@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/nosotros.css' %}" />
+    {% block css %}
+
+    {% endblock css %}
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated and user.is_superuser %}
+        <span>Bienvenido {{user.username}} </span>
+        <a href="{% url 'REGI'%}" class="btn btn-light btn-lg ms-auto" id="btnVerLogin">Crear cuenta</a>
+        {% else %}
+            {% if user.is_authenticated %}
+            <span>Bienvenido {{user.username}}</span>
+            {% else %}
+            <span>Bienvenido</span>
+            <a href="{% url 'LOGIN'%}" class="btn btn-light btn-lg ms-auto" id="btnVerLogin">Login</a>
+            {% endif %}
+        {% endif %}
+        
+    </header>
+    <main>
+        <nav class="navbar navbar-expand-xl" style="background-color: yellowgreen">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'IND' %}">
+                    <img src="{% static 'img/elrayo.png' %}" alt="logo" id="logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'IND' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'GALE' %}">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'CONTAC' %}">Contacto</a>
+                        </li>
+                        {% if superusuario or meca %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'ADM_REP' %}">Reparaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'ADM_REPUESTOS' %}">Repuestos</a>
+                            </li>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'LOGOUT' %}">Cerrar Sesión</a>
+                        </li>
+                        {% endif %}
+                        {% if request.session.carrito.items %}
+                            <a href="/carrito/">
+                                <img src="{% static 'img/carrito.png' %}" width="15px" height="15px" alt="">
+                            </a>
+                            {{ cantidades }}
+                        {% endif %}
+                        <li class="nav-item">
+                            <form class="form-inline my-2 my-lg-0" action="{% url 'GALE' %}" method="post">
+                                {% csrf_token %}
+                                <div class="input-group align-items-center">
+                                    <input class="form-control" type="search" placeholder="Buscar...." aria-label="Search"
+                                        name="txtBuscar" id="txtBuscar">
+                                    <button class="btn btn-outline-success ms-2" type="submit">Buscar</button>
+                                </div>
+                            </form>
+
+                        </li>
+                    </ul>
+                </div>
+
+        </nav>
+        <!-- Region editable -->
+        {% block contenido %}
+
+        {% endblock contenido%}
+    </main>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+<!-- pie de pagina-->
+<footer>
+    <h4>&copy; 2023 Taller Mecanico Rayo McQueen #Los Comendadores 1165 San Geronimo.</h4>
+</footer>
+{% block js %}
+
+{% endblock js %}
+
+</html>

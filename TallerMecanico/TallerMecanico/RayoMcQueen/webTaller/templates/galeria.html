@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}" />
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+{% endblock css %}
+
+{% block contenido %}
+        <section id="blog">
+            <h3>Reparaciones en nuestro taller.</h3>
+            <form action="{% url 'GALE' %}" method="post">
+                {% csrf_token %}
+                Cantidad actual de reparaciones y repuestos: {{cantidad}}
+                <br>
+                Buscar reparación:
+                <input type="text" name="txtBuscar" id="txtBuscar">
+                <input type="submit" value="Buscar">
+
+            </form>
+
+            <form action="{% url 'FILTRO_CATE' %}" method="post">
+                {% csrf_token %}
+                Categoria del vehiculo:
+
+                <select name="cboCategoria">
+                    <option>Todos</option>
+                    {% for cate in categorias %}
+                    <option>{{cate.nombre}}</option>
+                    {% endfor %}
+                    
+                    
+                </select>
+                <input type="submit" value="Buscar">
+            </form>
+
+        <script>
+          $(document).ready(function () {
+            recupera_dolar();
+          })
+        </script>
+        <script>
+          var dol=0;
+
+          function recupera_dolar() {
+            fetch("https://mindicador.cl/api/dolar")
+            .then(function(response) {
+              if (response.status != 200){
+                console.log("no se conecto al servicio");
+                return;
+              }
+              response.json().then(function(data) {
+                  var dolar= data.serie[0].valor;
+                  dol=dolar;
+                  document.getElementById("txtDolar").value= dolar;
+              })
+            })
+          }
+        </script>
+        <br>
+        <br>
+        <h6>
+          Las reparaciones se muestran en dólares para brindar transparencia y claridad en los precios.
+          <br>
+           Valor actual del dolar:
+           <input type="text" id="txtDolar" readonly onmousedown="return false;" />
+
+        </h6>
+
+        <section id="blog">
+          <h2>¡Compra nuestros repuestos aquí!</h2>
+          <div class="contenedor">
+              {% for item in repuestos %}
+              <article>
+                  <img src="{{item.foto.url}}" alt="" />
+                  <h4>{{item.nombre}}</h4>
+                  <h4>Precio: ${{item.precio}}</h4>
+                  <button onclick="ir({{item.idRepuesto}})">Agregar Carrito</button>
+              </article>
+              {% endfor %}
+          </div>
+      
+          <h2>¡Revisa nuestros trabajos aquí!</h2>
+          <div class="contenedor">
+              {% for item in reparaciones %}
+              <article>
+                  <img src="{{item.foto.url}}" alt="" />
+                  <h4>{{item.nombre}}</h4>
+                  <a href="{% url 'FICHA' item.nombre %}">Ver Ficha</a>
+              </article>
+              {% endfor %}
+          </div>
+      </section>
+      
+            <script>
+                function ir(id){
+                location.href ='/agregar/'+id+'/';
+
+                }
+                var arreglo = new Array()
+                var indice= 0
+                function agregar(id,nombre,precio) {
+                texto={'id':id,'nombre':nombre,'precio':precio};
+                arreglo[indice]=texto
+                console.log(texto)
+                localStorage.setItem('carro',arreglo  )
+                indice++
+                alert('GRABO')
+                }
+            </script>
+        </section>
+    </main>
+{% endblock contenido %}

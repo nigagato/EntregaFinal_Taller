@@ -1,0 +1,201 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+
+body{
+    background-color: rgba(154, 205, 50, 0.2);
+    display: flex;
+}
+
+
+.contenedor-formulario{
+    display: flex;
+    margin-left: 8%;
+    margin-top: 2%;
+    width: 80%;
+}
+
+#logo{
+    margin-left: 30%;
+}
+
+.imagen-formulario{
+    background-image: url('../img/sistemaescape.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 40%;
+    flex: 0 0 calc(60%);
+    position: static;
+}
+
+.imagen-formulario::before{
+    content:'';
+    position: static;
+}
+
+.formulario{
+    padding: 3%;
+    background-color: yellowgreen;
+    width: 100%;
+}
+
+.texto-formulario h2, .input label{
+    color: black;
+    font-size: 22px;
+    text-align: center;
+}
+
+.texto-formulario img{
+    height: 200px;
+    width: 200px;
+    margin-left: 130px;
+}
+
+.input label{
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.input input{
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.close a{
+    position: absolute;
+    top: 3%;
+    right: 13%;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    margin-top: 2%;
+    text-decoration: none;
+    color: black;
+}
+
+#btnRegistrar{
+    margin-top: 20px;
+    margin-left: 300px;
+    height: 50px;
+    width: 140px;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    background-color: #f8f9fa;
+}
+
+#btnRegistrar:hover{
+    cursor: pointer;
+}
+
+.nav-item {
+    display: block;
+    margin-left: 10px;
+  
+}
+  
+.nav-link{
+    color: black;
+    border-bottom: 2px solid transparent; /* Agrega un borde inferior transparente */
+    transition: border-bottom-color 0.2s;
+}
+  
+.nav-link:hover{
+    border-bottom-color: white;
+}
+
+
+@media (max-width:1200px){
+    .close a{
+        margin-right: 3%;
+    }
+    .contenedor-formulario{
+        width: 80%;
+    }
+    
+    .imagen-formulario{
+        width: 50vw;
+        height: 120vh;
+        margin-left: -8%;
+    }
+
+}
+
+@media(max-width:1130px){
+    .close a{
+        margin-right: -3%;
+    }
+}
+
+@media (max-width:968px){
+    .close a{
+        margin-right: 8%;
+    }
+    .contenedor-formulario{
+        width: 70%;
+        margin-left: 15%;
+    }
+    
+    .imagen-formulario{
+        display: none;
+    }
+
+    #logo{
+        margin-left: 35%;
+    }
+
+    #btnRegistrar{
+        margin-left: 70%;
+    }
+
+}
+
+@media (max-width:720px){
+    .close a{
+        margin-right: 15%;
+    }
+    .contenedor-formulario{
+        width: 70%;
+        margin-left: 15%;
+    }
+    
+    .imagen-formulario{
+        display: none;
+    }
+
+    #logo{
+        margin-left: 27%;
+    }
+
+    #btnRegistrar{
+        margin-left: 60%;
+    }
+}
+
+@media (max-width:600px){
+    #logo{
+        margin-left: 15%;
+    }
+    .close a{
+        margin-right: 4%;
+    }
+
+    #btnRegistrar{
+        margin-left: 35%;
+    }
+}

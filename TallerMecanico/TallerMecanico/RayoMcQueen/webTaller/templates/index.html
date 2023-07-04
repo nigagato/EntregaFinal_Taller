@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/nosotros.css' %}" />
+    <title>Rayo McQueen</title>
+</head>
+
+<body>
+    <header>
+        {% if user.is_authenticated and user.is_superuser %}
+        <span>Bienvenido {{user.username}} </span>
+        <a href="{% url 'REGI'%}" class="btn btn-light btn-lg ms-auto" id="btnVerLogin">Crear cuenta</a>
+        {% else %}
+            {% if user.is_authenticated %}
+            <span>Bienvenido {{user.username}}</span>
+            {% else %}
+            <span>Bienvenido</span>
+            <a href="{% url 'LOGIN'%}" class="btn btn-light btn-lg ms-auto" id="btnVerLogin">Login</a>
+            {% endif %}
+        {% endif %}
+        
+    </header>
+    <main>
+        <nav class="navbar navbar-expand-xl" style="background-color: yellowgreen">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'IND' %}">
+                    <img src="{% static 'img/elrayo.png' %}" alt="logo" id="logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'IND' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'GALE' %}">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'CONTAC' %}">Contacto</a>
+                        </li>
+                        {% if superusuario or meca %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'ADM_REP' %}">Reparaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'ADM_REPUESTOS' %}">Repuestos</a>
+                            </li>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'LOGOUT' %}">Cerrar Sesión</a>
+                        </li>
+                        {% endif %}
+                        {% if request.session.carrito.items %}
+                            <a href="/carrito/">
+                                <img src="{% static 'img/carrito.png' %}" width="15px" height="15px" alt="">
+                            </a>
+                            {{ cantidades }}
+                        {% endif %}
+                        <li class="nav-item">
+                            <form class="form-inline my-2 my-lg-0" action="{% url 'GALE' %}" method="post">
+                                {% csrf_token %}
+                                <div class="input-group align-items-center">
+                                    <input class="form-control" type="search" placeholder="Buscar...." aria-label="Search"
+                                        name="txtBuscar" id="txtBuscar">
+                                    <button class="btn btn-outline-success ms-2" type="submit">Buscar</button>
+                                </div>
+                            </form>
+
+                        </li>
+                    </ul>
+                </div>
+
+        </nav>
+        <section id="carrusel">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <h1 style="text-align: center;">Taller Mecánico Rayo McQueen</h1>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1">
+
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2">
+
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3">
+
+                    </button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 4">
+
+                </button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/alineacionbalanceo.jpg' %}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Nuestro taller.</h5>
+                            <p>Lo mejor de lo mejor.</p>
+                        </div>
+                    </div>
+                    {% for repa in reparaciones %}
+                    {% if repa.publicar %}
+                        <div class="carousel-item">
+                            <img src="{{repa.foto.url}}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{repa.nombre}}</h5>
+                                <p>{{repa.descripcion}}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="categorias">
+            <div class="center-text">
+                <h3>¡Revisa nuestros trabajos aquí! </h3>
+            </div>
+            <div class="container">
+                {% for cate in categorias %}
+                <article>
+                    <a href="{% url 'FILTRO_CATEGORIA' cate.nombre %}">
+                        <img src="{{cate.foto.url}}" alt="">
+                    </a>
+                    <h4>{{cate.nombre}}</h4>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <section id="nosotros">
+        <h2><strong>Taller Mecánico Rayo McQueen</strong></h2>
+        <div class="container">
+          <p>
+            En <strong>Rayo McQueen</strong>, nos importa que un servicio bien hecho no sea también de un costo alto, por lo que estamos comprometidos a darte un precio justo y un servicio de calidad.
+            <br /><br />
+            Gracias a nuestra experiencia, nuestro principal objetivo es que nuestros clientes resuelvan rápidamente su inconveniente con la mejor atención y sin perder tiempo en traslados innecesarios. Por eso, ofrecemos nuestro servicio mecánico a domicilio para diagnóstico y reparaciones menores.
+            <br /><br />
+            Olvídate de quedar sin tu auto por semanas... Con nosotros te aseguras un servicio express y de calidad.
+          </p>
+          <a href="{% url 'CONTAC' %}" class="btn" id="boton">Contactanos</a>
+        </div>
+      </section>
+</body>
+<footer>
+    <h4>&copy; 2023 Taller Mecanico Rayo McQueen #Los Comendadores 1165 San Geronimo.</h4>
+</footer>
+
+</html>
+
+<!--  <h5>Email</h5>
+                <input class="col-p" placeholder=" " type="email" name="txtEmail" id="txtEmail" required>
+                <br>
+                <br>
+                <h5>Contraseña</h5>
+                <input class="col-p" placeholder=" " type="password" name="pwdPass" id="pwdPass" required>
+                <br>
+                <br>
+                <input type="button" value="Login"  onclick= "login()">-->

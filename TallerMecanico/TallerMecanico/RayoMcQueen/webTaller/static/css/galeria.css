@@ -1,0 +1,146 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+  
+header {
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    padding: 30px;
+    
+}
+  
+#btnAgendar {
+    margin-left: 10px;
+    margin-top: -2px;
+}
+  
+#btnVerLogin {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    margin-top: -10px;
+}
+  
+#logo {
+    margin-left: 200px;
+    height: 125px;
+    width: 125px;
+    padding: 0;
+    background-size: cover;
+  }
+  
+  #navbarSupportedContent {
+    margin-right: 200px;
+  }
+  
+.nav-item {
+    display: block;
+    margin-left: 10px;  
+}
+  
+.nav-link{
+    color: black;
+    border-bottom: 2px solid transparent; /* Agrega un borde inferior transparente */
+    transition: border-bottom-color 0.2s;
+    font-size: large;
+}
+  
+.nav-link:hover{
+    border-bottom-color: white;
+}
+  
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgba(154, 205, 50, 0.2);
+}
+
+#blog .contenedor img{
+    width: 22vw;
+    height: 22vh;
+    border: solid 2px black;
+}
+
+#blog .contenedor{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+}
+#blog .contenedor article{
+    margin: 1%;
+}
+#blog{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 15px;
+}
+
+
+footer{
+    background-color: black;
+    color: honeydew;
+    text-align: center;
+    margin-top: auto;
+}
+  
+footer h4{
+    font-size: large;
+}
+
+
+  
+@media (max-width:1200px){
+    #logo{
+        margin-left: 80%;
+    }
+}
+
+@media(max-width:968px){
+    #logo{
+        margin-left: 80%;
+    }
+    header span{
+        display: none;
+    }
+
+    #btnAgendar{
+        margin-right: 15%;
+    }
+
+    article h4{
+        font-size: medium;
+    }
+}
+
+@media (max-width:768px){
+    span{
+        display: none;
+    }
+    
+    #btnAgendar{
+        margin-right: 55%;
+    }
+}
+
+@media (max-width:560px){
+    #btnMensaje{
+        margin-left: 30%;
+    }
+
+    #btnAgendar{
+        margin-right: 105%;
+    }
+
+    #btnVerLogin{
+        margin-left: -5%;
+    }
+
+}
+
+

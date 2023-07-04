@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/admin_repuestos.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tabla_repuestos.css' %}" />
+{% endblock css %}
+
+{% block contenido %}
+{{mensaje}}
+<section id="admin_reparaciones">
+    <h3>Actualmente en el usuario: <b style="color: red;">{{user.username}}</b></h3>
+    <div class="contacto-input">
+        <form action="{% url 'ADM_REPUESTOS' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <h5>Nombre</h5>
+            <input class="col-p" placeholder="Nombre...." type="text" name="txtNombre" id="txtNombre" required />
+            <br />
+            <br />
+            <h5>Descripción</h5>
+            <textarea class="col-g" placeholder="Ingrese descripción" name="txtDescripcion" id="txtDescripcion"></textarea>
+            <br>
+            <h5>Precio</h5>
+            <input class="col-p" placeholder="ingrese precio" type="number" name="txtPrecio" id="txtPrecio">
+            <br />
+            <br />
+            <h5>Foto de repuesto:</h5>                   
+            <input type="file" class="col-g" name="txtImg" id="txtImg"/>      
+            <br />
+            <br>
+            <h5>Categoría de repuesto:</h5>
+            <select name="cboCategoria" class="col-g" id="cboCategoria">
+                {% for item in categorias %}
+                    <option value="{{item.nombre}}">{{item.nombre}}</option>
+                {% endfor %}
+            </select>
+            <button onclick="enviarMensaje()" id="btnMensaje">Guardar Repuestos</button>
+        </form>
+    </div>
+</section>
+<section>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Categoria</td>
+            <td>Imagen</td>
+            <td>Publicar</td>
+            <td>Comentario</td>
+            <td>Eliminar</td>
+        </tr>
+
+    {% for item in repuestos %}  
+        <tr>
+            <td>{{item.idRepuesto}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.categoria.nombre}}</td>
+            <td>
+                <img src="{{item.foto.url}}" width="150px" height="150px">
+            </td>
+
+            <td>
+                {% if item.publicar == True %}
+                    Publicado
+                {% else %}
+                    No publicado
+                {% endif %}
+            </td>
+            <td>{{item.comentario}}</td>
+
+            <td> 
+                <button onclick="eliminar({{item.idRepuesto}})">Eliminar</button>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</section>
+<!-- ventana modal-->
+<!-- Modal -->
+<!-- ventana modal-->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Foto a Galeria</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form action="{% url 'GG' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <input type="hidden" name="txtId" id="txtId" value="">
+                    <input type="file" name="txtFoto" id="txtFoto">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Grabar</button>
+                </div>
+        </form>
+
+        </div>
+    </div>
+    </div>
+    <!-- fin modal-->
+    <script>
+        function eliminar(id) {
+            Swal.fire({
+            title: '¡Precaución!',
+            text: "¿Estás seguro que quieres eliminar esta reparación?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                location.href='/eliminar_repu/' +id+'/';
+            }
+            })
+            
+        }
+    </script>
+</main>
+{% endblock contenido %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function enviarMensaje() {
+        var nombre = document.getElementById('txtNombre').value;
+        var descripcion = document.getElementById('txtDescripcion').value;
+        var precio = document.getElementById('txtPrecio').value;
+        var foto = document.getElementById('txtImg').value;
+
+        if (nombre.trim() === '' || descripcion.trim() === '' || precio.trim() === '' || foto.trim() === '') {
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, complete todos los campos y seleccione una foto.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+            return;
+        }
+
+        Swal.fire({
+            position: 'top-mid',
+            icon: 'success',
+            title: 'Repuesto guardado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+</script>
+
+
+{% endblock js %}
